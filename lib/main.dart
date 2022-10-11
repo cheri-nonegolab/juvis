@@ -175,119 +175,333 @@ class _MyHomePageState extends State<MyHomePage> {
                                           .name),
                                       ElevatedButton(
                                           onPressed: () {
-                                            _clearGATTCash(_scanList[index].id);
+                                            _clearGATTCash(
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('clear GATT cash')),
+                                          child: Text('GATT 캐시 삭제')),
                                       ElevatedButton(
                                           onPressed: () {
-                                            _getState(_scanList[index].id);
+                                            _getState(
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('state')),
+                                          child: Text('State 불러오기')),
                                       ElevatedButton(
                                           onPressed: () {
                                             _getFrequencyMode(
-                                                _scanList[index].id);
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('frequency mode')),
+                                          child: Text('주파모드 불러오기')),
                                       ElevatedButton(
                                           onPressed: () {
                                             _getFrequencyModeNoti(
-                                                _scanList[index].id);
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('frequency mode-noti')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _setFrequencyMode(
-                                                _scanList[index].id, 1);
-                                          },
-                                          child: Text('setFrequencyMode1')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _setFrequencyMode(
-                                                _scanList[index].id, 2);
-                                          },
-                                          child: Text('setFrequencyMode2')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _setFrequencyMode(
-                                                _scanList[index].id, 3);
-                                          },
-                                          child: Text('setFrequencyMode3')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _setFrequencyMode(
-                                                _scanList[index].id, 4);
-                                          },
-                                          child: Text('setFrequencyMode4')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _setFrequencyMode(
-                                                _scanList[index].id, 5);
-                                          },
-                                          child: Text('setFrequencyMode5')),
+                                          child: Text('주파모드 불러오기(notify)')),
+                                      Text(
+                                        "주파모드 셋팅",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: <Widget>[
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyMode(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      1);
+                                                },
+                                                child: Text("1")),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyMode(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      2);
+                                                },
+                                                child: Text('2')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyMode(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      3);
+                                                },
+                                                child: Text('3')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyMode(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      4);
+                                                },
+                                                child: Text('4')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyMode(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      5);
+                                                },
+                                                child: Text('5')),
+                                          ],
+                                        ),
+                                      ),
                                       ElevatedButton(
                                           onPressed: () {
                                             _getFrequencyIntensity(
-                                                _scanList[index].id);
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('frequency intensity')),
+                                          child: Text('주파강도 불러오기')),
                                       ElevatedButton(
                                           onPressed: () {
                                             _getFrequencyIntensityNoti(
-                                                _scanList[index].id);
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text(
-                                              '_getFrequencyIntensityNoti')),
+                                          child: Text('주파강도 불러오기(notify)')),
+                                      Text(
+                                        "주파강도 셋팅",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: <Widget>[
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      0);
+                                                },
+                                                child: Text('0')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      1);
+                                                },
+                                                child: Text('1')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      2);
+                                                },
+                                                child: Text('2')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      3);
+                                                },
+                                                child: Text('3')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      4);
+                                                },
+                                                child: Text('4')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      5);
+                                                },
+                                                child: Text('5')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      6);
+                                                },
+                                                child: Text('6')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      7);
+                                                },
+                                                child: Text('7')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      8);
+                                                },
+                                                child: Text('8')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      9);
+                                                },
+                                                child: Text('9')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      10);
+                                                },
+                                                child: Text('10')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      11);
+                                                },
+                                                child: Text('11')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      12);
+                                                },
+                                                child: Text('12')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      13);
+                                                },
+                                                child: Text('13')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      14);
+                                                },
+                                                child: Text('14')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setFrequencyIntensity(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      15);
+                                                },
+                                                child: Text('15')),
+                                          ],
+                                        ),
+                                      ),
                                       ElevatedButton(
                                           onPressed: () {
-                                            _setFrequencyIntensity(
-                                                _scanList[index].id);
+                                            _getSensor(
+                                                _connectList[index].deviceId);
                                           },
-                                          child:
-                                              Text('_setFrequencyIntensity')),
+                                          child: Text('센서 On/Off 불러오기')),
+                                      Text(
+                                        "센서On/Off셋팅",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: <Widget>[
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _sensorOn(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      true,
+                                                      true);
+                                                },
+                                                child: Text('주파On/센서On')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _sensorOn(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      true,
+                                                      false);
+                                                },
+                                                child: Text('주파ON/센서Off')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _sensorOn(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      false,
+                                                      true);
+                                                },
+                                                child: Text('주파Off/센서On')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _sensorOff(_connectList[index]
+                                                      .deviceId);
+                                                },
+                                                child: Text('주파Off/센서Off')),
+                                          ],
+                                        ),
+                                      ),
                                       ElevatedButton(
                                           onPressed: () {
-                                            _getSensor(_scanList[index].id);
+                                            _getSensorMode(
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('sensor')),
+                                          child: Text('센서모드 불러오기(notify)')),
                                       ElevatedButton(
                                           onPressed: () {
-                                            _sensorOn(_scanList[index].id);
+                                            _getBattery(
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('sensor on')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _sensorOff(_scanList[index].id);
-                                          },
-                                          child: Text('sensor off')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _getSensorMode(_scanList[index].id);
-                                          },
-                                          child: Text('sensor mode')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _getBattery(_scanList[index].id);
-                                          },
-                                          child: Text('battery')),
+                                          child: Text('배터리 불러오기')),
                                       ElevatedButton(
                                           onPressed: () {
                                             _getBatteryNoti(
-                                                _scanList[index].id);
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('_getBatteryNoti')),
+                                          child: Text('배터리 불러오기(notify)')),
                                       ElevatedButton(
                                           onPressed: () {
                                             _getMotionError(
-                                                _scanList[index].id);
+                                                _connectList[index].deviceId);
                                           },
-                                          child: Text('motion error')),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            _setMotionError(
-                                                _scanList[index].id);
-                                          },
-                                          child: Text('_setMotionError')),
+                                          child: Text('모션에러 불러오기')),
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: <Widget>[
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setMotionError(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      true);
+                                                },
+                                                child: Text('모션에러 셋팅 On')),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  _setMotionError(
+                                                      _connectList[index]
+                                                          .deviceId,
+                                                      false);
+                                                },
+                                                child: Text('모션에러 셋팅 Off')),
+                                          ],
+                                        ),
+                                      )
                                     ],
                                   ),
                                   trailing: GestureDetector(
@@ -438,9 +652,9 @@ class _MyHomePageState extends State<MyHomePage> {
             flutterReactiveBle
                 .subscribeToCharacteristic(characteristicSub)
                 .listen((data) {
-              print('🤚🏻🤚🏻 device-state ::: ${data}');
+              print('🥸🥸🥸 state 불러오기(notify) ::: ${data}');
             }, onError: (dynamic error) {
-              print('🤚🏻🤚🏻 device-state-error ::: ${error}');
+              print('🥸🥸🥸 state 불러오기(notify)-error ::: ${error}');
             });
 
             break;
@@ -482,8 +696,22 @@ class _MyHomePageState extends State<MyHomePage> {
         deviceId: deviceId);
     final response =
         await flutterReactiveBle.readCharacteristic(characteristic);
-    print("_getState::: ${response}");
+    print("🥸🥸🥸 state 불러오기::: ${response}");
   }
+
+  // void _getStateNoti(deviceId) async {
+  //   final characteristic = QualifiedCharacteristic(
+  //       serviceId: _serviceId,
+  //       characteristicId: _frequencyModeCharId,
+  //       deviceId: deviceId);
+  //   final response = await flutterReactiveBle
+  //       .subscribeToCharacteristic(characteristic)
+  //       .listen((event) {
+  //     print("🥸🥸🥸 state 불러오기(notify)::: ${event}");
+  //   }, onError: (error) {
+  //     print("🥸🥸🥸 state 불러오기(notify)-error::: ${error}");
+  //   });
+  // }
 
   void _getFrequencyMode(deviceId) async {
     final characteristic = QualifiedCharacteristic(
@@ -492,7 +720,7 @@ class _MyHomePageState extends State<MyHomePage> {
         deviceId: deviceId);
     final response =
         await flutterReactiveBle.readCharacteristic(characteristic);
-    print("_getFrequencyMode::: ${response}");
+    print("🥸🥸🥸 주파모드불러오기::: ${response}");
   }
 
   void _getFrequencyModeNoti(deviceId) async {
@@ -503,16 +731,16 @@ class _MyHomePageState extends State<MyHomePage> {
     final response = await flutterReactiveBle
         .subscribeToCharacteristic(characteristic)
         .listen((event) {
-      print("_getFrequencyModeNoti::: ${event}");
+      print("🥸🥸🥸 주파모드불러오기(notify)::: ${event}");
     }, onError: (error) {
-      print("_getFrequencyModeNoti-error::: ${error}");
+      print("🥸🥸🥸 주파모드불러오기(notify)-error::: ${error}");
     });
   }
 
-  void _setFrequencyMode(deviceId, int value) async {
-    int binary = 0x01;
+  void _setFrequencyMode(deviceId, int mode) async {
+    int binary = 0x00;
 
-    switch (value) {
+    switch (mode) {
       case 1:
         binary = 0x01;
         break;
@@ -529,16 +757,17 @@ class _MyHomePageState extends State<MyHomePage> {
         binary = 0x05;
         break;
       default:
-        binary = 0x01;
+        binary = 0x00;
     }
 
     final characteristic = QualifiedCharacteristic(
         serviceId: _serviceId,
         characteristicId: _frequencyModeCharId,
         deviceId: deviceId);
-    final response = await flutterReactiveBle
-        .writeCharacteristicWithResponse(characteristic, value: [binary, 0x60]);
-    print('_setFrequencyMode:::');
+    final response = await flutterReactiveBle.writeCharacteristicWithResponse(
+        characteristic,
+        value: [binary, 0x3D]); //60초셋팅
+    print('🥸🥸🥸 주파모드 셋팅:::');
   }
 
   void _getFrequencyIntensity(deviceId) async {
@@ -548,7 +777,7 @@ class _MyHomePageState extends State<MyHomePage> {
         deviceId: deviceId);
     final response =
         await flutterReactiveBle.readCharacteristic(characteristic);
-    print("_getFrequencyIntensity::: ${response}");
+    print("🥸🥸🥸 주파강도 불러오기::: ${response}");
   }
 
   void _getFrequencyIntensityNoti(deviceId) async {
@@ -559,20 +788,74 @@ class _MyHomePageState extends State<MyHomePage> {
     final response = await flutterReactiveBle
         .subscribeToCharacteristic(characteristic)
         .listen((event) {
-      print("__getFrequencyIntensityNoti::: ${event}");
+      print("🥸🥸🥸 주파강도 불러오기(notify)::: ${event}");
     }, onError: (error) {
-      print("__getFrequencyIntensityNoti-error::: ${error}");
+      print("🥸🥸🥸 주파강도 불러오기(notify)-error::: ${error}");
     });
   }
 
-  void _setFrequencyIntensity(deviceId) async {
+  void _setFrequencyIntensity(deviceId, int intensity) async {
+    int value = 0x00;
+    switch (intensity) {
+      case 0:
+        value = 0x00;
+        break;
+      case 1:
+        value = 0x01;
+        break;
+      case 2:
+        value = 0x02;
+        break;
+      case 3:
+        value = 0x03;
+        break;
+      case 4:
+        value = 0x04;
+        break;
+      case 5:
+        value = 0x05;
+        break;
+      case 6:
+        value = 0x06;
+        break;
+      case 7:
+        value = 0x07;
+        break;
+      case 8:
+        value = 0x08;
+        break;
+      case 9:
+        value = 0x09;
+        break;
+      case 10:
+        value = 0x0A;
+        break;
+      case 11:
+        value = 0x0B;
+        break;
+      case 12:
+        value = 0x0C;
+        break;
+      case 13:
+        value = 0x0D;
+        break;
+      case 14:
+        value = 0x0E;
+        break;
+      case 15:
+        value = 0x0F;
+        break;
+      default:
+        value = 0x00;
+    }
+
     final characteristic = QualifiedCharacteristic(
         serviceId: _serviceId,
         characteristicId: _frequencyIntensityCharId,
         deviceId: deviceId);
     final response = await flutterReactiveBle
-        .writeCharacteristicWithResponse(characteristic, value: [0x15]);
-    print("_setFrequencyIntensity:::");
+        .writeCharacteristicWithResponse(characteristic, value: [value]);
+    print("🥸🥸🥸 주파강도 셋팅:::");
   }
 
   void _getSensor(deviceId) async {
@@ -582,18 +865,29 @@ class _MyHomePageState extends State<MyHomePage> {
         deviceId: deviceId);
     final response =
         await flutterReactiveBle.readCharacteristic(characteristic);
-    print("_getSensor::: ${response}");
+    print("🥸🥸🥸 센서 on/off 불러오기::: ${response}");
   }
 
-  void _sensorOn(deviceId) async {
+  void _sensorOn(deviceId, bool frequency, bool sensor) async {
+    var value = 0x00;
+    if (frequency == true && sensor == true) {
+      value = 17;
+    } else if (frequency == false && sensor == true) {
+      value = 0x01;
+    } else if (frequency == true && sensor == false) {
+      value = 16;
+    }
+
     final characteristic = QualifiedCharacteristic(
         serviceId: _serviceId,
         characteristicId: _sensorCharId,
         deviceId: deviceId);
-    print(_connectList);
+
     final response = await flutterReactiveBle
-        .writeCharacteristicWithoutResponse(characteristic, value: [17]);
-    print("_sensorOn::: ");
+        .writeCharacteristicWithoutResponse(characteristic, value: [value]);
+    print("🥸🥸🥸 sensor On::: ");
+    print(_connectList);
+    print(deviceId);
   }
 
   void _sensorOff(deviceId) async {
@@ -603,7 +897,7 @@ class _MyHomePageState extends State<MyHomePage> {
         deviceId: deviceId);
     final response = await flutterReactiveBle
         .writeCharacteristicWithoutResponse(characteristic, value: [0x00]);
-    print("_sensorOff::: ");
+    print("🥸🥸🥸 Sensor Off::: ");
   }
 
   void _getSensorMode(deviceId) async {
@@ -654,13 +948,14 @@ class _MyHomePageState extends State<MyHomePage> {
     print("_getMotionError::: ${response}");
   }
 
-  void _setMotionError(deviceId) async {
+  void _setMotionError(deviceId, bool value) async {
     final characteristic = QualifiedCharacteristic(
         serviceId: _serviceId,
         characteristicId: _motionErrorCharId,
         deviceId: deviceId);
-    final response = await flutterReactiveBle
-        .writeCharacteristicWithResponse(characteristic, value: [0x01]);
+    final response = await flutterReactiveBle.writeCharacteristicWithResponse(
+        characteristic,
+        value: [value ? 0x01 : 0x00]);
     print("_setMotionError:::");
   }
 
