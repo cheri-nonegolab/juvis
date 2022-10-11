@@ -8,6 +8,15 @@ import 'package:juvis/Subject.dart';
 
 import 'package:permission_handler/permission_handler.dart';
 
+class DeviceInfo extends ConnectionStateUpdate {
+  String name;
+  DeviceInfo(
+      {required this.name,
+      required super.connectionState,
+      required super.deviceId,
+      super.failure});
+}
+
 void main() {
   runApp(const MyApp());
 }
@@ -42,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<DiscoveredDevice> _scanList = List.empty(growable: true);
   final flutterReactiveBle = FlutterReactiveBle();
   late StreamSubscription<DiscoveredDevice> _scanStream;
-  List<ConnectionStateUpdate> _connectList = List.empty(growable: true);
+  List<DeviceInfo> _connectList = List.empty(growable: true);
   List<StreamSubscription<ConnectionStateUpdate>> _connectStream =
       List.empty(growable: true);
 
@@ -167,9 +176,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               itemBuilder: (context, index) {
                                 return ListTile(
                                   leading: Icon(Icons.device_hub),
-                                  title: Text(_connectList[index].deviceId),
+                                  title: Text(_connectList[index].name),
                                   subtitle: Column(
                                     children: <Widget>[
+                                      Text(_connectList[index].deviceId),
                                       Text(_connectList[index]
                                           .connectionState
                                           .name),
@@ -625,10 +635,20 @@ class _MyHomePageState extends State<MyHomePage> {
             connectionTimeout: Duration(seconds: 5)) //연결 타입아웃
         .listen((ConnectionStateUpdate event) {
       if (_connectList.every((element) => element.deviceId != device.id)) {
-        _connectList.add(event);
+        _connectList.add(DeviceInfo(
+            name: device.name,
+            connectionState: event.connectionState,
+            deviceId: event.deviceId,
+            failure: event.failure));
       } else {
         _connectList = _connectList
-            .map((element) => element.deviceId == device.id ? event : element)
+            .map((element) => element.deviceId == device.id
+                ? DeviceInfo(
+                    name: device.name,
+                    connectionState: event.connectionState,
+                    deviceId: event.deviceId,
+                    failure: event.failure)
+                : element)
             .toList();
       }
 
